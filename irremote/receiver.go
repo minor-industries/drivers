@@ -138,7 +138,7 @@ func (ir *ReceiverDevice) pinChange(pin machine.Pin) {
 			}
 		}
 	case bit_read_start:
-		if duration > time.Microsecond*700 || duration < time.Microsecond*400 {
+		if duration > time.Microsecond*750 || duration < time.Microsecond*350 {
 			// Invalid interval for 562.5µs pulse. Reset
 			ir.resetStateMachine()
 		} else {
@@ -146,7 +146,7 @@ func (ir *ReceiverDevice) pinChange(pin machine.Pin) {
 			ir.necState = bit_read_end
 		}
 	case bit_read_end:
-		if duration > time.Microsecond*1800 || duration < time.Microsecond*400 {
+		if duration > time.Microsecond*1850 || duration < time.Microsecond*350 {
 			// Invalid interval for 562.5µs space OR 1687.5µs space. Reset
 			ir.resetStateMachine()
 		} else {
@@ -170,7 +170,7 @@ func (ir *ReceiverDevice) pinChange(pin machine.Pin) {
 			}
 		}
 	case trail_pulse_end:
-		if duration > time.Microsecond*700 || duration < time.Microsecond*400 {
+		if duration > time.Microsecond*750 || duration < time.Microsecond*350 {
 			// Invalid interval for trailing 562.5µs pulse. Reset
 			ir.resetStateMachine()
 		} else {
